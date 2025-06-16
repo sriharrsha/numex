@@ -4,40 +4,54 @@ export const mockGeneratedNames = [
     id: "1",
     name: "VitalCore Solutions",
     overallScore: 94,
+    scoreBreakdown: {
+      numerology: 38, // Out of 40 points
+      domains: 28,    // Out of 30 points (.com available = 25, others = 3)
+      trademark: 20,  // Out of 20 points (clear status)
+      entity: 8      // Out of 10 points
+    },
     numerology: {
       pythagorean: {
         expression: 7,
         destiny: 7,
-        meaning: "Spiritual seeker, analytical mind, perfect for consulting"
+        meaning: "Spiritual seeker, analytical mind, perfect for consulting",
+        harmonyScore: 9.2
       },
       chaldean: {
         expression: 6,
         destiny: 6,
-        meaning: "Nurturing, responsible, excellent for service businesses"
+        meaning: "Nurturing, responsible, excellent for service businesses",
+        harmonyScore: 8.8
       },
       kabbalistic: {
         expression: 25,
         destiny: 7,
-        meaning: "Divine wisdom, transformational energy"
-      }
+        meaning: "Divine wisdom, transformational energy",
+        harmonyScore: 9.5
+      },
+      overallHarmony: 9.2 // Average of all systems
     },
     domainAvailability: {
-      ".com": true,
-      ".net": true,
-      ".org": false,
-      ".co": true,
-      ".biz": true
+      ".com": { available: true, value: 25, priority: "highest" },
+      ".net": { available: true, value: 1, priority: "high" },
+      ".org": { available: false, value: 0, priority: "medium" },
+      ".co": { available: true, value: 1, priority: "medium" },
+      ".biz": { available: true, value: 1, priority: "low" },
+      ".io": { available: true, value: 1, priority: "medium" }
     },
+    domainScore: 28, // Total domain availability score
     trademark: {
       status: "clear",
       similarMarks: 0,
-      riskLevel: "low"
+      riskLevel: "low",
+      score: 20
     },
     entityCompliance: {
       LLC: true,
       Inc: true,
       Corp: true,
-      conflicts: []
+      conflicts: [],
+      score: 8
     }
   },
   {
