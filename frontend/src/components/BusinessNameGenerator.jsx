@@ -97,16 +97,58 @@ const BusinessNameGenerator = () => {
     </div>
   );
 
-  const DomainStatus = ({ domains }) => (
-    <div className="grid grid-cols-5 gap-2">
-      {Object.entries(domains).map(([domain, available]) => (
-        <div key={domain} className="text-center">
-          <div className={`w-3 h-3 rounded-full mx-auto mb-1 ${
-            available ? 'bg-green-500' : 'bg-red-500'
-          }`} />
-          <span className="text-xs text-gray-600">{domain}</span>
+  const DomainStatus = ({ domains, domainScore }) => (
+    <div className="space-y-3">
+      <div className="flex items-center justify-between mb-2">
+        <span className="font-medium text-gray-700">Domain Score</span>
+        <span className="font-bold text-blue-600">{domainScore}/30</span>
+      </div>
+      <div className="grid grid-cols-6 gap-2">
+        {Object.entries(domains).map(([domain, info]) => (
+          <div key={domain} className="text-center">
+            <div className={`w-4 h-4 rounded-full mx-auto mb-1 ${
+              info.available ? 'bg-green-500' : 'bg-red-500'
+            }`} />
+            <span className="text-xs text-gray-600">{domain}</span>
+            <div className="text-xs text-gray-500">
+              {info.available ? `+${info.value}` : '0'}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="text-xs text-gray-500 mt-2">
+        .com = 25pts • .net = 1pt • .org/.co/.io = 1pt • .biz = 1pt
+      </div>
+    </div>
+  );
+
+  const ScoreBreakdown = ({ breakdown, overallScore }) => (
+    <div className="bg-gray-50 p-4 rounded-lg">
+      <h4 className="font-semibold mb-3 text-gray-800">Score Breakdown</h4>
+      <div className="space-y-2">
+        <div className="flex justify-between items-center">
+          <span className="text-sm text-gray-600">Numerology Harmony</span>
+          <span className="font-medium text-purple-600">{breakdown.numerology}/40</span>
         </div>
-      ))}
+        <div className="flex justify-between items-center">
+          <span className="text-sm text-gray-600">Domain Availability</span>
+          <span className="font-medium text-blue-600">{breakdown.domains}/30</span>
+        </div>
+        <div className="flex justify-between items-center">
+          <span className="text-sm text-gray-600">Trademark Status</span>
+          <span className="font-medium text-green-600">{breakdown.trademark}/20</span>
+        </div>
+        <div className="flex justify-between items-center">
+          <span className="text-sm text-gray-600">Entity Compliance</span>
+          <span className="font-medium text-orange-600">{breakdown.entity}/10</span>
+        </div>
+        <div className="border-t pt-2 mt-2">
+          <div className="flex justify-between items-center font-semibold">
+            <span className="text-gray-800">Total Score</span>
+            <span className="text-indigo-600">{overallScore}/100</span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 
