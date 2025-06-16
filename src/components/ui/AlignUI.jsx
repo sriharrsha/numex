@@ -223,7 +223,7 @@ Badge.displayName = "Badge";
 export const Tabs = ({ value, onValueChange, children, className }) => {
   return (
     <div className={cn("w-full", className)}>
-      <div data-tabs-value={value} data-tabs-onchange={onValueChange}>
+      <div>
         {children}
       </div>
     </div>

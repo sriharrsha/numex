@@ -64,7 +64,7 @@ const BusinessNameGenerator = () => {
     setResults(null); // Clear previous results before new API call
     
     try {
-      const functionsBaseUrl = process.env.REACT_APP_SUPABASE_FUNCTIONS_URL || 'http://localhost:54321/functions/v1';
+      const functionsBaseUrl = process.env.REACT_APP_SUPABASE_FUNCTIONS_URL || 'https://vienbkxwzkglrtwigjfj.supabase.co/functions/v1';
       
       const response = await fetch(`${functionsBaseUrl}/generate-names`, {
         method: 'POST',

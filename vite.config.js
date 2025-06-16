@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://127.0.0.1:54321', // Supabase local dev server
+        target: 'https://vienbkxwzkglrtwigjfj.supabase.co', // Supabase deployed server
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '/functions/v1'),
       },
