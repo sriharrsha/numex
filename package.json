@@ -1,21 +1,41 @@
 {
-  "name": "numex-supabase-backend",
+  "name": "numex",
   "version": "1.0.0",
   "private": true,
-  "description": "Backend services for Numex, using Supabase Functions.",
+  "description": "Full-stack Numex application with Supabase and Vite/React frontend.",
   "scripts": {
-    "dev:frontend": "cd frontend && PORT=3001 npm run dev",
+    "dev:vite": "npx vite --port 3001",
+    "build:vite": "npx vite build",
+    "preview:vite": "npx vite preview",
     "supabase:start": "supabase start",
     "supabase:stop": "supabase stop",
-    "dev": "concurrently \"npm:dev:frontend\" \"npm:supabase:start\"",
+    "dev": "concurrently \"npm:dev:vite\" \"npm:supabase:start\"",
     "deploy:functions": "supabase functions deploy --no-verify-jwt",
-    "start": "echo \"Use 'npm run dev' for local development.\""
+    "start": "npm run dev:vite"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.11.3"
+    "@google/generative-ai": "^0.11.3",
+    "axios": "^1.8.4",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.515.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.5.1",
+    "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "@eslint/js": "9.23.0",
+    "@vitejs/plugin-react": "^4.5.2",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^8.2.2",
+    "eslint": "9.23.0",
+    "eslint-plugin-import": "2.31.0",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-react": "7.37.4",
+    "globals": "15.15.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.3.5"
   },
   "engines": {
     "node": ">=18.0.0"
