@@ -112,40 +112,54 @@ export const mockGeneratedNames = [
     id: "3",
     name: "Phoenix Ventures",
     overallScore: 91,
+    scoreBreakdown: {
+      numerology: 35, // Out of 40 points
+      domains: 28,    // Out of 30 points (.com available = 25, others = 3)
+      trademark: 18,  // Out of 20 points (clear but one similar)
+      entity: 10     // Out of 10 points (perfect compliance)
+    },
     numerology: {
       pythagorean: {
         expression: 3,
         destiny: 3,
-        meaning: "Creative expression, communication, perfect for media/marketing"
+        meaning: "Creative expression, communication, perfect for media/marketing",
+        harmonyScore: 8.5
       },
       chaldean: {
         expression: 1,
         destiny: 1,
-        meaning: "Leadership, pioneering spirit, excellent for startups"
+        meaning: "Leadership, pioneering spirit, excellent for startups",
+        harmonyScore: 9.0
       },
       kabbalistic: {
         expression: 21,
         destiny: 3,
-        meaning: "Crown of creation, success in all endeavors"
-      }
+        meaning: "Crown of creation, success in all endeavors",
+        harmonyScore: 8.8
+      },
+      overallHarmony: 8.8
     },
     domainAvailability: {
-      ".com": true,
-      ".net": false,
-      ".org": true,
-      ".co": true,
-      ".biz": true
+      ".com": { available: true, value: 25, priority: "highest" },
+      ".net": { available: false, value: 0, priority: "high" },
+      ".org": { available: true, value: 1, priority: "medium" },
+      ".co": { available: true, value: 1, priority: "medium" },
+      ".biz": { available: true, value: 1, priority: "low" },
+      ".io": { available: true, value: 1, priority: "medium" }
     },
+    domainScore: 28,
     trademark: {
       status: "clear",
       similarMarks: 1,
-      riskLevel: "low"
+      riskLevel: "low",
+      score: 18
     },
     entityCompliance: {
       LLC: true,
       Inc: true,
       Corp: true,
-      conflicts: []
+      conflicts: [],
+      score: 10
     }
   }
 ];
