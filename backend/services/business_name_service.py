@@ -283,5 +283,16 @@ class BusinessNameService:
             },
             'domainScore': 28,
             'trademark': {'status': 'unknown', 'similarMarks': 0, 'riskLevel': 'unknown', 'score': 15},
-            'entityCompliance': {'LLC': True, 'Inc': True, 'Corp': True, 'conflicts': [], 'score': 8}
+            'entityCompliance': {
+                'LLC': True, 
+                'Inc': True, 
+                'Corp': True, 
+                'S-Corp': True,
+                'LLP': True,
+                'LP': True,
+                'PC': True,
+                'PLLC': True,
+                'conflicts': [], 
+                'score': 8
+            }
         }
