@@ -62,3 +62,30 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
+
+/* Emergent Badge Styles */
+.emergent-badge-container {
+  display: flex !important;
+  align-items: center !important;
+  position: fixed !important;
+  bottom: 20px;
+  right: 20px;
+  text-decoration: none;
+  padding: 6px 10px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
+  font-size: 12px !important;
+  z-index: 9999 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  border-radius: 8px !important;
+  background-color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+.emergent-badge-text {
+  color: #000000;
+  /* font-family is inherited from container, or can be set explicitly if different */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important; /* Duplicating for safety, though could inherit */
+  font-size: 12px !important; /* Usually inherited, but explicit for safety */
+  align-items: center; /* This is a flex item property, better on parent or if p is flex container */
+  margin-bottom: 0;
+}
