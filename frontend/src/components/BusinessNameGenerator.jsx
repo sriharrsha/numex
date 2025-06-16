@@ -82,7 +82,13 @@ const BusinessNameGenerator = () => {
 
   const NumerologyCard = ({ system, data }) => (
     <div className="p-4 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg border border-purple-200">
-      <h4 className="font-semibold text-purple-900 mb-2 capitalize">{system}</h4>
+      <div className="flex justify-between items-start mb-2">
+        <h4 className="font-semibold text-purple-900 capitalize">{system}</h4>
+        <div className="text-right">
+          <div className="text-xs text-purple-600">Harmony</div>
+          <div className="font-bold text-purple-800">{data.harmonyScore}/10</div>
+        </div>
+      </div>
       <div className="space-y-2">
         <div className="flex justify-between">
           <span className="text-sm text-gray-600">Expression:</span>
