@@ -57,41 +57,55 @@ export const mockGeneratedNames = [
   {
     id: "2",
     name: "Quantum Dynamics",
-    overallScore: 87,
+    overallScore: 73,
+    scoreBreakdown: {
+      numerology: 36, // Out of 40 points
+      domains: 3,     // Out of 30 points (.com not available = 0, others = 3)
+      trademark: 12,  // Out of 20 points (similar status)
+      entity: 6      // Out of 10 points (some conflicts)
+    },
     numerology: {
       pythagorean: {
         expression: 9,
         destiny: 9,
-        meaning: "Universal consciousness, humanitarian, great for global ventures"
+        meaning: "Universal consciousness, humanitarian, great for global ventures",
+        harmonyScore: 9.0
       },
       chaldean: {
         expression: 8,
         destiny: 8,
-        meaning: "Material mastery, business acumen, perfect for corporations"
+        meaning: "Material mastery, business acumen, perfect for corporations",
+        harmonyScore: 8.8
       },
       kabbalistic: {
         expression: 36,
         destiny: 9,
-        meaning: "Cosmic awareness, innovative solutions"
-      }
+        meaning: "Cosmic awareness, innovative solutions",
+        harmonyScore: 9.2
+      },
+      overallHarmony: 9.0
     },
     domainAvailability: {
-      ".com": false,
-      ".net": true,
-      ".org": true,
-      ".co": true,
-      ".biz": false
+      ".com": { available: false, value: 0, priority: "highest" },
+      ".net": { available: true, value: 1, priority: "high" },
+      ".org": { available: true, value: 1, priority: "medium" },
+      ".co": { available: true, value: 1, priority: "medium" },
+      ".biz": { available: false, value: 0, priority: "low" },
+      ".io": { available: true, value: 1, priority: "medium" }
     },
+    domainScore: 4,
     trademark: {
       status: "similar",
       similarMarks: 2,
-      riskLevel: "medium"
+      riskLevel: "medium",
+      score: 12
     },
     entityCompliance: {
       LLC: true,
       Inc: true,
       Corp: false,
-      conflicts: ["Quantum - regulated term in certain states"]
+      conflicts: ["Quantum - regulated term in certain states"],
+      score: 6
     }
   },
   {
