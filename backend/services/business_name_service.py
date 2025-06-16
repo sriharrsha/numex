@@ -222,11 +222,17 @@ class BusinessNameService:
         penalty = len(conflicts) * 2
         final_score = max(base_score - penalty, 0)
         
-        return {
-            **entity_types,
+        # Create result dictionary with all entity types
+        result = {
             'conflicts': conflicts,
             'score': final_score
         }
+        
+        # Add all entity types to the result
+        for entity_type, value in entity_types.items():
+            result[entity_type] = value
+            
+        return result
     
     def _generate_founder_analysis(self, founder_name: str, founder_birthdate: str, analyzed_names: List[Dict]) -> Dict[str, Any]:
         """Generate founder numerological analysis and compatibility"""
