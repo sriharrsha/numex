@@ -4,7 +4,7 @@
   "private": true,
   "description": "Backend services for Numex, using Supabase Functions.",
   "scripts": {
-    "dev:frontend": "cd frontend && PORT=3001 npm start",
+    "dev:frontend": "cd frontend && PORT=3001 npm run dev",
     "supabase:start": "supabase start",
     "supabase:stop": "supabase stop",
     "dev": "concurrently \"npm:dev:frontend\" \"npm:supabase:start\"",
