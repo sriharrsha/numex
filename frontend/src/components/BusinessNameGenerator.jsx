@@ -32,16 +32,53 @@ const BusinessNameGenerator = () => {
 
   const generateNames = async () => {
     setLoading(true);
-    // Simulate API call delay
-    setTimeout(() => {
+    
+    try {
+      const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+      
+      const response = await fetch(`${API}/generate-names`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          business_description: formData.businessDescription,
+          industry: formData.industry,
+          include_keywords: formData.includeKeywords,
+          exclude_keywords: formData.excludeKeywords,
+          state: formData.state,
+          entity_type: formData.entityType,
+          num_suggestions: formData.numSuggestions,
+          founder_name: formData.founderName,
+          founder_birthdate: formData.founderBirthdate
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`API Error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      
+      setResults({
+        names: data.names,
+        founderAnalysis: data.founderAnalysis,
+        optimalDates: data.optimalDates
+      });
+      setActiveTab('results');
+      
+    } catch (error) {
+      console.error('Error generating names:', error);
+      // Fallback to mock data if API fails
       setResults({
         names: mockGeneratedNames,
         founderAnalysis: mockFounderAnalysis,
         optimalDates: mockOptimalDates
       });
-      setLoading(false);
       setActiveTab('results');
-    }, 2000);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const ScoreCircle = ({ score, size = 60 }) => {
