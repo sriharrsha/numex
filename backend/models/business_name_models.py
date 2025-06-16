@@ -84,7 +84,7 @@ class BusinessNameResult(BaseModel):
     name: str
     overallScore: int
     scoreBreakdown: ScoreBreakdown
-    numerology: Dict[str, NumerologyResult]
+    numerology: Dict[str, Any]  # Changed from Dict[str, NumerologyResult] to accept overallHarmony as float
     domainAvailability: Dict[str, DomainInfo]
     domainScore: int
     trademark: TrademarkResult
