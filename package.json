@@ -1,0 +1,23 @@
+{
+  "name": "numex-supabase-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Backend services for Numex, using Supabase Functions.",
+  "scripts": {
+    "dev:frontend": "cd frontend && PORT=3001 npm start",
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop",
+    "dev": "concurrently \"npm:dev:frontend\" \"npm:supabase:start\"",
+    "deploy:functions": "supabase functions deploy --no-verify-jwt",
+    "start": "echo \"Use 'npm run dev' for local development.\""
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.11.3"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

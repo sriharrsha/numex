@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/AlignUI';
 import { Button } from './ui/AlignUI';
 import { Input, Textarea, Select, SelectOption, Badge, Label } from './ui/AlignUI';
@@ -23,6 +23,35 @@ const BusinessNameGenerator = () => {
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState('generator');
 
+  // LocalStorage keys
+  const FORM_DATA_KEY = 'businessNameGeneratorForm';
+  const RESULTS_DATA_KEY = 'businessNameGeneratorResults';
+
+  // Load data from localStorage on component mount
+  useEffect(() => {
+    const savedFormData = localStorage.getItem(FORM_DATA_KEY);
+    if (savedFormData) {
+      setFormData(JSON.parse(savedFormData));
+    }
+    const savedResults = localStorage.getItem(RESULTS_DATA_KEY);
+    if (savedResults) {
+      setResults(JSON.parse(savedResults));
+      setActiveTab('results'); // If results exist, show them
+    }
+  }, []);
+
+  // Save formData to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem(FORM_DATA_KEY, JSON.stringify(formData));
+  }, [formData]);
+
+  // Save results to localStorage whenever they change
+  useEffect(() => {
+    if (results) {
+      localStorage.setItem(RESULTS_DATA_KEY, JSON.stringify(results));
+    }
+  }, [results]);
+
   const handleInputChange = (field, value) => {
     setFormData(prev => ({
       ...prev,
@@ -32,11 +61,12 @@ const BusinessNameGenerator = () => {
 
   const generateNames = async () => {
     setLoading(true);
+    setResults(null); // Clear previous results before new API call
     
     try {
-      const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+      const functionsBaseUrl = process.env.REACT_APP_SUPABASE_FUNCTIONS_URL || 'http://localhost:54321/functions/v1';
       
-      const response = await fetch(`${API}/generate-names`, {
+      const response = await fetch(`${functionsBaseUrl}/generate-names`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

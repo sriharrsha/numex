@@ -4,16 +4,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import BusinessNameGenerator from "./components/BusinessNameGenerator";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+// BACKEND_URL and API constants are removed to use relative paths for Vercel deployment.
+// const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+// const API = `${BACKEND_URL}/api`;
 
 const Home = () => {
   const helloWorldApi = async () => {
     try {
-      const response = await axios.get(`${API}/`);
+      // Updated to use a relative path to a defined health check endpoint
+      const response = await axios.get(`/api/health`); 
       console.log(response.data.message);
     } catch (e) {
-      console.error(e, `errored out requesting / api`);
+      console.error(e, `errored out requesting /api/health`);
     }
   };
 
