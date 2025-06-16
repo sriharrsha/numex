@@ -91,7 +91,7 @@ export const mockGeneratedNames = [
       LLC: true,
       Inc: true,
       Corp: false,
-      conflicts: ["Quantum" - regulated term in certain states]
+      conflicts: ["Quantum - regulated term in certain states"]
     }
   },
   {
